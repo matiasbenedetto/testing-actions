@@ -23,6 +23,8 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: Update Google Fonts JSON
+      env:
+        GOOGLE_FONTS_API_KEY: ${{ secrets.GOOGLE_FONTS_API_KEY }}
       run: |
         echo "Updating Google fonts JSON"
         node update-file.js
