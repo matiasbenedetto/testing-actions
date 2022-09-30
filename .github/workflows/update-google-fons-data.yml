@@ -28,7 +28,7 @@ jobs:
         GOOGLE_FONTS_API_KEY: ${{ secrets.GOOGLE_FONTS_API_KEY }}
       run: |
         echo "Updating Google fonts JSON"
-        node ./github/update-google-fonts-json-file.js
+        node ./.github/update-google-fonts-json-file.js
         git config user.name 'Matias Benedetto'
         git config user.email 'matias.benedetto@gmail.com'
         git add assets/google-fonts/fallback-fonts-list.json
