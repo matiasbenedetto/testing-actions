@@ -1,14 +1,15 @@
 const fs = require('fs');
 const crypto = require('crypto');
 
-const API_URL = "https://weathered-surf-2f67.meb.workers.dev";
+const API_URL = "https://www.googleapis.com/webfonts/v1/webfonts?key=";
+const API_KEY = process.env.GOOGLE_FONTS_API_KEY;
 
 function calculateHash (somestring){
     return crypto.createHash('md5').update(somestring).digest('hex').toString();
 };
 
 async function updateFiles () {
-    const newApiData = await fetch(API_URL);
+    const newApiData = await fetch(`${API_URL}${API_KEY}`);
     const newData = await newApiData.json();
     const newDataString = JSON.stringify(newData, null, 2);
 
