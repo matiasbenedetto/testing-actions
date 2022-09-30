@@ -35,9 +35,7 @@ jobs:
       run: |
         echo "Hello"
         node update-file.js
-         git config --global user.name 'Matias Benedetto'
-         git config --global user.email 'matias.benedetto@gmail.com'
-         git add assets/google-fonts/fallback-fonts-list.json
-         git commit -m "Updating file"
-         git push
+        git add assets/google-fonts/fallback-fonts-list.json
+        git commit -m "Updating file"
+        git push
         
