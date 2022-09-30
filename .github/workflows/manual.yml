@@ -29,6 +29,6 @@ jobs:
         git config user.name 'Matias Benedetto'
         git config user.email 'matias.benedetto@gmail.com'
         git add assets/google-fonts/fallback-fonts-list.json
-        git commit -m "Updating file"
+        git commit -m "Updating file" || echo "No changes to commit"
         git push
         
