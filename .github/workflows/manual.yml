@@ -25,9 +25,15 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 17.5
+
     # Runs a single command using the runners shell
     - name: Send greeting
       run: |
-        echo "Hello ${{ github.event.inputs.name }}"
-        DATA=$(curl https://google-fonts.meb.workers.dev/)
-        echo " ${{DATA}} "
+        echo "Hello"
+        node update-file.js
+
+        
