@@ -22,12 +22,13 @@ jobs:
         node-version: 18
 
     # Runs a single command using the runners shell
+    # This script updates the Goolgle Fonts API data in the repo if there is new data available
     - name: Update Google Fonts JSON
       env:
         GOOGLE_FONTS_API_KEY: ${{ secrets.GOOGLE_FONTS_API_KEY }}
       run: |
         echo "Updating Google fonts JSON"
-        node update-file.js
+        node ./github/update-google-fonts-json-file.js
         git config user.name 'Matias Benedetto'
         git config user.email 'matias.benedetto@gmail.com'
         git add assets/google-fonts/fallback-fonts-list.json
