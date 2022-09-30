@@ -22,9 +22,9 @@ jobs:
         node-version: 18
 
     # Runs a single command using the runners shell
-    - name: Send greeting
+    - name: Update Google Fonts JSON
       run: |
-        echo "Hello"
+        echo "Updating Google fonts JSON"
         node update-file.js
         git config user.name 'Matias Benedetto'
         git config user.email 'matias.benedetto@gmail.com'
