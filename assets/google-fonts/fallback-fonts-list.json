@@ -2,7 +2,7 @@
   "kind": "webfonts#webfontList",
   "items": [
     {
-      "family": "ABeeZee",
+      "family": "Testing if the updater works",
       "variants": [
         "regular",
         "italic"
