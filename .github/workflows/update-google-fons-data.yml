@@ -31,6 +31,7 @@ jobs:
       env:
         GOOGLE_FONTS_API_KEY: ${{ secrets.GOOGLE_FONTS_API_KEY }}
         BRANCH_NAME: update/google-fonts-json-${{ steps.date.outputs.date }}
+        GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
       run: |
         echo "Updating Google fonts JSON"
         node ./.github/update-google-fonts-json-file.js
