@@ -15,7 +15,7 @@ on:
         - patch
 jobs:
   tag:
-    name: New tag
+    name: Create a new release and deploy to WordPress.org
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
