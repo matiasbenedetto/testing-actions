@@ -9,7 +9,7 @@ function updateVersion () {
     const newTag = semver.inc(currentTag, releaseType);
 
     if (!semver.valid(currentTag) && !semver.valid(newTag)) {
-        console.error("❎  Error current tag is not a valid semver version");
+        console.error(`❎  Error: current tag ( ${ currentTag } ) is not a valid semver version"`);
         process.exit(1);
     }
 
