@@ -38,13 +38,19 @@ async function updateVersion () {
         process.exit(1);
     }
 
+    // get changes since last tag
+    const changes = await getChangesSinceGitTag(currentTag);
+
+    // check if there are any changes
+    if (!changes || changes.total === 0) {
+        console.error("❎  No changes since last tag. There is nothing to release.");
+        process.exit(1);
+    }
+
     // update package.json version
     package.version = newTag;
     fs.writeFileSync('./package.json', JSON.stringify(package, null, 2));
     console.info('✅ Version updated', currentTag, '=>', newTag);
-
-    // get changes since last tag
-    const changes = await getChangesSinceGitTag(currentTag);
     
     // update readme.txt version with the new changelog
     const readme = fs.readFileSync('./readme.txt', 'utf8');
