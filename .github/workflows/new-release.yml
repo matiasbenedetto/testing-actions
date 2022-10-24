@@ -5,8 +5,8 @@ name: Deploy to WordPress.org
 on:
   workflow_dispatch:
     inputs:
-      logLevel:
-        description: 'New release'
+      release_type:
+        description: 'Release type'
         required: true
         type: choice
         options:
@@ -28,8 +28,19 @@ jobs:
 
     - name: Compile Javascript App
       run: npm run build
+      
+    - name: Get current tag
+      id: get-current-tag
+      run: echo ::set-output name=TAG::$(echo ${{ git describe --tags `git rev-list --tags --max-count=1` }})
+
+    - name: Update tag
+      id: update-tag
+      env:
+        CURRENT_TAG: ${{ steps.get-current-tag.outputs.TAG }}
+        RELEASE_TYPE: ${{ github.event.inputs.release_type }}
+      run: npm run update-tag 
 
     - name: Create Relase
       env:
         GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
-      run: gh release create
+      run: gh release create ${{steps.update-tag.outputs.NEW_TAG }}
