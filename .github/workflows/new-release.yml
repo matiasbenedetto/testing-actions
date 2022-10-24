@@ -31,7 +31,7 @@ jobs:
       
     - name: Get current tag
       id: get-current-tag
-      run: echo ::set-output name=TAG::$(echo ${{ git describe --tags `git rev-list --tags --max-count=1` }})
+      run: echo ::set-output name=TAG::$(echo git describe --tags `git rev-list --tags --max-count=1`)
 
     - name: Update tag
       id: update-tag
