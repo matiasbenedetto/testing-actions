@@ -1,5 +1,6 @@
 const semver = require('semver');
 const fs = require('fs');
+const core = require('@actions/core');
 
 const currentTag = process.env.CURRENT_TAG;
 const releaseType = process.env.RELEASE_TYPE;
@@ -26,6 +27,8 @@ function updateVersion () {
     }
 
     // update readme.txt version
+
+    core.setOutput('NEW_TAG', newTag);
 }
 
 updateVersion();
