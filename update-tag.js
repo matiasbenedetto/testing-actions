@@ -54,15 +54,17 @@ async function updateVersion () {
     
     // update readme.txt version with the new changelog
     const readme = fs.readFileSync('./readme.txt', 'utf8');
-    const newChangelog = `== Changelog ==\n\n= ${ newTag } =\n\n${ changes.all.map(change => `${ change.message }`).join('\n')}`;
+    const changelogChanges = changes.all.map(change => `${ change.message }`).join('\n');
+    const newChangelog = `== Changelog ==\n\n= ${ newTag } =\n\n${ changelogChanges }`;
     let newReadme = readme.replace("== Changelog ==", newChangelog);
     // update version in readme.txt
     newReadme = newReadme.replace(/Stable tag: (.*)/, `Stable tag: ${ newTag }`);
     fs.writeFileSync('./readme.txt', newReadme);
     console.info('✅  Readme version updated', currentTag, '=>', newTag);
 
-    // output new tag to be used by the next step of the github action
+    // output data to be used by the next steps of the github action
     core.setOutput('NEW_TAG', newTag);
+    core.setOutput('CHANGELOG', changelogChanges);
 }
 
 updateVersion();
