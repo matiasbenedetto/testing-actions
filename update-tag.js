@@ -45,7 +45,6 @@ async function updateVersion () {
 
     // get changes since last tag
     const changes = await getChangesSinceGitTag(currentTag);
-    console.info('ℹ️  Changes since last tag:', changes);
     
     // update readme.txt version with the new changelog
     const readme = fs.readFileSync('./readme.txt', 'utf8');
