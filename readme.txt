@@ -1,7 +1,7 @@
 === Testing Actions ===
 Requires at least: 6.0
 Tested up to: 6.0
-Stable tag: 3.0.2
+Stable tag: 3.0.3
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -12,6 +12,11 @@ A repo created to test github actions
 Testing Github actions
 
 == Changelog ==
+
+= 3.0.3 =
+
+check if there are new changes to release
+change job name
 
 = 3.0.2 =
 
