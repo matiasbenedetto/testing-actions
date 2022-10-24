@@ -40,7 +40,7 @@ async function updateVersion () {
 
     // update package.json version
     package.version = newTag;
-    // fs.writeFileSync('./package.json', JSON.stringify(package, null, 2));
+    fs.writeFileSync('./package.json', JSON.stringify(package, null, 2));
     console.info('✅ Version updated', currentTag, '=>', newTag);
 
     // get changes since last tag
