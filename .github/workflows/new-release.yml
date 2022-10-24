@@ -38,4 +38,9 @@ jobs:
     - name: Create Relase
       env:
         GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
-      run: gh release create ${{steps.update-tag.outputs.NEW_TAG }}
+      run: |
+        git config user.name 'Matias Benedetto'
+        git config user.email 'matias.benedetto@gmail.com'
+        git config --global --add --bool push.autoSetupRemote true
+        git diff-index --quiet HEAD -- || ( git add package.json && git commit -m "version bump" && git push )
+        gh release create ${{steps.update-tag.outputs.NEW_TAG }}
