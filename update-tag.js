@@ -2,14 +2,12 @@ const semver = require('semver');
 const fs = require('fs');
 const core = require('@actions/core');
 
-const currentTag = process.env.CURRENT_TAG;
 const releaseType = process.env.RELEASE_TYPE;
+const VALID_RELEASE_TYPES = ['major', 'minor', 'patch'];
 
 function updateVersion () {
-    const newTag = semver.inc(currentTag, releaseType);
-
-    if (!semver.valid(currentTag) && !semver.valid(newTag)) {
-        console.error(`❎  Error: current tag ( ${ currentTag } ) is not a valid semver version"`);
+    if ( !VALID_RELEASE_TYPES.includes(releaseType) ) {
+        console.error("❎  Error release type is not valid. Valid release types are: major, minor, patch");
         process.exit(1);
     }
 
@@ -18,16 +16,21 @@ function updateVersion () {
         process.exit(1);
     }
 
-    // update package.json version
-    if (fs.existsSync('./package.json')) {
-        var package = require('./package.json');
-        package.version = newTag;
-        fs.writeFileSync('./package.json', JSON.stringify(package, null, 2));
-        console.info('✅ Version updated', currentTag, '=>', newTag);
+    const package = require('./package.json');
+    const currentTag = package.version;
+    const newTag = semver.inc(currentTag, releaseType);
+
+    if (!semver.valid(currentTag)) {
+        console.error(`❎  Error: current tag ( ${ currentTag } ) is not a valid semver version"`);
+        process.exit(1);
     }
 
-    // update readme.txt version
+    // update package.json version
+    package.version = newTag;
+    fs.writeFileSync('./package.json', JSON.stringify(package, null, 2));
+    console.info('✅ Version updated', currentTag, '=>', newTag);
 
+    // update readme.txt version
     core.setOutput('NEW_TAG', newTag);
 }
 
