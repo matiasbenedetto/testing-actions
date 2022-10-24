@@ -1,0 +1,22 @@
+{
+  "name": "testing-actions",
+  "version": "1.0.0",
+  "description": "Testing ",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'Building...';"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matiasbenedetto/testing-actions.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matiasbenedetto/testing-actions/issues"
+  },
+  "homepage": "https://github.com/matiasbenedetto/testing-actions#readme",
+  "dependencies": {
+    "axios": "^1.1.3"
+  }
+}
