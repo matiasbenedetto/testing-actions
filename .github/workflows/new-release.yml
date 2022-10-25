@@ -32,11 +32,11 @@ jobs:
     - name: Compile Javascript App
       run: npm run build
 
-    - name: Update tag
-      id: update-tag
+    - name: Update version and changelog
+      id: update-version
       env:
         RELEASE_TYPE: ${{ github.event.inputs.release_type }}
-      run: npm run update-tag 
+      run: npm run update-version
 
     - name: Create Relase
       env:
@@ -46,4 +46,4 @@ jobs:
         git config user.email github-actions@github.com
         git config --global --add --bool push.autoSetupRemote true
         git diff-index --quiet HEAD -- || ( git add package.json readme.txt && git commit -m "Version bump & changelog update" && git push )
-        gh release create ${{steps.update-tag.outputs.NEW_TAG }} --notes "${{steps.update-tag.outputs.CHANGELOG }}"
+        gh release create ${{steps.update-version.outputs.NEW_TAG }} --notes "${{steps.update-version.outputs.CHANGELOG }}"

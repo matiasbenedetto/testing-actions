@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "echo 'Building...';",
-    "update-tag": "node update-tag.js"
+    "update-version": "node update-version-and-changelog.js"
   },
   "repository": {
     "type": "git",
