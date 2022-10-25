@@ -15,17 +15,17 @@ async function getChangesSinceGitTag (tag) {
 
 async function updateVersion () {
     if ( !VALID_RELEASE_TYPES.includes(releaseType) ) {
-        console.error("❎  Error release type is not valid. Valid release types are: major, minor, patch");
+        console.error("❎  Error: Release type is not valid. Valid release types are: major, minor, patch.");
         process.exit(1);
     }
 
     if (!fs.existsSync('./package.json')) {
-        console.error("❎  Error package.json file not found");
+        console.error("❎  Error: package.json file not found.");
         process.exit(1);
     }
 
     if (!fs.existsSync('./readme.txt')) {
-        console.error("❎  Error readme.txt file not found");
+        console.error("❎  Error: readme.txt file not found.");
         process.exit(1);
     }
 
@@ -34,7 +34,7 @@ async function updateVersion () {
     const newTag = semver.inc(currentTag, releaseType);
 
     if (!semver.valid(currentTag)) {
-        console.error(`❎  Error: current tag ( ${ currentTag } ) is not a valid semver version"`);
+        console.error(`❎  Error: current tag ( ${ currentTag } ) is not a valid semver version."`);
         process.exit(1);
     }
 
@@ -54,7 +54,7 @@ async function updateVersion () {
     
     // update readme.txt version with the new changelog
     const readme = fs.readFileSync('./readme.txt', 'utf8');
-    const changelogChanges = changes.all.map(change => `${ change.message }`).join('\n');
+    const changelogChanges = changes.all.map(change => `* ${ change.message }`).join('\n');
     const newChangelog = `== Changelog ==\n\n= ${ newTag } =\n\n${ changelogChanges }`;
     let newReadme = readme.replace("== Changelog ==", newChangelog);
     // update version in readme.txt
