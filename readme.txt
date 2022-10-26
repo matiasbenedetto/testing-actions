@@ -1,17 +1,38 @@
 === Testing Actions ===
 Requires at least: 6.0
 Tested up to: 6.0
-Stable tag: 3.0.4
+Stable tag: 3.0.8
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-A repo created to test github actions
+A repo created to test github actions!
 
 == Description ==
-Testing Github actions
+Testing Github actions!
 
 == Changelog ==
+
+= 3.0.8 =
+
+* Update readme.txt
+* Merge pull request #6 from matiasbenedetto/matiasbenedetto-patch-1
+
+= 3.0.7 =
+
+* Update new-release.yml
+
+= 3.0.6 =
+
+* Update readme.txt
+* Version bump & changelog update
+* Update readme.txt
+* Update package.json
+
+= 3.0.5 =
+
+* updating error messages
+* renaming files
 
 = 3.0.4 =
 
