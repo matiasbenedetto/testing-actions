@@ -9,7 +9,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 A repo created to test github actions!
 
 == Description ==
-Testing Github actions!
+Hi! I'm testing Github actions!
 
 == Changelog ==
 
